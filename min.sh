@@ -1,1 +1,1 @@
-google-closure-compiler --js js/lightbox.js --js_output_file js/lightbox.min.js
+google-closure-compiler --js dest/js/lightbox.js --js_output_file dest/js/lightbox.min.js
