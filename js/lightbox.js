@@ -187,7 +187,7 @@
       events as usual.
      */
     this.$nav.on('mousedown', function(event) {
-      if (event.which === 3) {
+		if (event.button === 2) {
         self.$nav.css('pointer-events', 'none');
 
         self.$lightbox.one('contextmenu', function() {
@@ -199,14 +199,21 @@
     });
 
 
-    this.$lightbox.find('.lb-loader, .lb-close').on('click keyup', function(e) {
-      // If mouse click OR 'enter' or 'space' keypress, close LB
-      if (
-        e.type === 'click' || (e.type === 'keyup' && (e.which === 13 || e.which === 32))) {
-        self.end();
-        return false;
-      }
-    });
+// 画像をクリックしても画像を閉じる処理を追加
+	this.$lightbox.find('.lb-image').on('click keyup', function(e) {
+		if (e.type === 'click' || (e.type === 'keyup' && (e.key === 'Enter' || e.key === ' '))) {
+		self.end();
+		return false;
+		}
+	});
+	
+	this.$lightbox.find('.lb-nav','.lb-loader, .lb-close').on('click keyup', function(e) {
+		// If mouse click OR 'enter' or 'space' keypress, close LB
+		if (e.type === 'click' || (e.type === 'keyup' && (e.key === 'Enter' || e.key === ' '))) {
+			self.end();
+		return false;
+		}
+	});
   };
 
   // Show overlay and lightbox. If the image is part of a set, add siblings to album array.
@@ -285,7 +292,7 @@
 
     // Show loading state
     this.$overlay.fadeIn(this.options.fadeDuration);
-    $('.lb-loader').fadeIn('slow');
+    // $('.lb-loader').fadeIn('slow');
     this.$lightbox.find('.lb-image, .lb-nav, .lb-prev, .lb-next, .lb-dataContainer, .lb-numbers, .lb-caption').hide();
     this.$outerContainer.addClass('animating');
 
