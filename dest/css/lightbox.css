@@ -10,7 +10,7 @@ body.lb-disable-scrolling {
   background-color: black;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.6;
-  display: none;
+  /* display: none; */
 }
 
 .lightbox {
@@ -62,7 +62,7 @@ body.lb-disable-scrolling {
 
 .lb-loader {
   position: absolute;
-  top: 43%;
+  top: 180px;
   left: 0;
   height: 25%;
   width: 100%;
@@ -78,6 +78,7 @@ body.lb-disable-scrolling {
   margin: 0 auto;
   background: url(../images/loading.gif) no-repeat;
   display: none;
+  opacity: 0.6;
 }
 
 .lb-nav {
