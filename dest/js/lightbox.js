@@ -1,5 +1,5 @@
 /*!
- * Lightbox v2.11.4
+ * Lightbox v2.11.5
  * by Lokesh Dhakar
  *
  * More info:
@@ -14,21 +14,7 @@
 
 // Uses Node, AMD or browser globals to create a module.
 (function (root, factory) {
-
-	//IE
-	const ua = window.navigator.userAgent;
-	const msie = ua.indexOf('MSIE ');
-	const trident = ua.indexOf('Trident/');
-	if( msie > 0 || trident > 0||'-ms-scroll-limit' in document.documentElement.style && '-ms-ime-align' in document.documentElement.style){
-		return;
-	}
-	//preload
-	const link = document.createElement('link');
-	if(!link.relList || !link.relList.supports || !link.relList.supports('preload')){
-		return;
-	}
-
-	if (typeof define === 'function' && define.amd) {
+    if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['jquery'], factory);
     } else if (typeof exports === 'object') {
@@ -120,8 +106,8 @@
     // while Lightbox is opened will keep the focus on or inside one of these
     // two elements.
     //
-    // We do this so we can prevent propogation of the Esc keypress when
-    // Lightbox is open. This prevents it from intefering with other components
+    // We do this so we can prevent propagation of the Esc keypress when
+    // Lightbox is open. This prevents it from interfering with other components
     // on the page below.
     //
     // Github issue: https://github.com/lokesh/lightbox2/issues/663
@@ -201,7 +187,7 @@
       events as usual.
      */
     this.$nav.on('mousedown', function(event) {
-		if (event.button === 2) {
+			if (event.button === 2) {
         self.$nav.css('pointer-events', 'none');
 
         self.$lightbox.one('contextmenu', function() {
@@ -214,20 +200,20 @@
 
 
 // 画像をクリックしても画像を閉じる処理を追加
-	this.$lightbox.find('.lb-image').on('click keyup', function(e) {
-		if (e.type === 'click' || (e.type === 'keyup' && (e.key === 'Enter' || e.key === ' '))) {
-		self.end();
-		return false;
-		}
-	});
-	
-	this.$lightbox.find('.lb-nav','.lb-loader, .lb-close').on('click keyup', function(e) {
-		// If mouse click OR 'enter' or 'space' keypress, close LB
-		if (e.type === 'click' || (e.type === 'keyup' && (e.key === 'Enter' || e.key === ' '))) {
-			self.end();
-		return false;
-		}
-	});
+this.$lightbox.find('.lb-image').on('click keyup', function(e) {
+	if (e.type === 'click' || (e.type === 'keyup' && (e.key === 'Enter' || e.key === ' '))) {
+	self.end();
+	return false;
+	}
+});
+
+this.$lightbox.find('.lb-nav','.lb-loader, .lb-close').on('click keyup', function(e) {
+	// If mouse click OR 'enter' or 'space' keypress, close LB
+	if (e.type === 'click' || (e.type === 'keyup' && (e.key === 'Enter' || e.key === ' '))) {
+        self.end();
+        return false;
+      }
+    });
   };
 
   // Show overlay and lightbox. If the image is part of a set, add siblings to album array.
@@ -254,17 +240,8 @@
     var dataLightboxValue = $link.attr('data-lightbox');
     var $links;
 
-	function escapeHtml(unsafe) {
-		return unsafe
-			 .replace(/&/g, "&amp;")
-			 .replace(/</g, "&lt;")
-			 .replace(/>/g, "&gt;")
-			 .replace(/"/g, "&quot;")
-			 .replace(/'/g, "&#039;");
-	}
-
-	if (dataLightboxValue) {
-      $links = $($link.prop('tagName') + '[data-lightbox="' + escapeHtml(dataLightboxValue) + '"]');
+    if (dataLightboxValue) {
+      $links = $($link.prop('tagName') + '[data-lightbox="' + dataLightboxValue + '"]');
       for (var i = 0; i < $links.length; i = ++i) {
         addToAlbum($($links[i]));
         if ($links[i] === $link[0]) {
@@ -489,8 +466,8 @@
         if (alwaysShowNav) {
           this.$lightbox.find('.lb-prev, .lb-next').css('opacity', '1');
         }else{
-			this.$lightbox.find('.lb-prev, .lb-next');
-		}
+					this.$lightbox.find('.lb-prev, .lb-next');
+						}
         this.$lightbox.find('.lb-prev, .lb-next').show();
       } else {
         if (this.currentImageIndex > 0) {
@@ -499,7 +476,7 @@
             this.$lightbox.find('.lb-prev').css('opacity', '1');
           }else{
             this.$lightbox.find('.lb-prev');
-		  }
+          }
         }
         if (this.currentImageIndex < this.album.length - 1) {
           this.$lightbox.find('.lb-next').show();
@@ -507,7 +484,7 @@
             this.$lightbox.find('.lb-next').css('opacity', '1');
           }else{
             this.$lightbox.find('.lb-next');
-		  }
+          }
         }
       }
     }
