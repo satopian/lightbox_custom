@@ -260,11 +260,19 @@
         var dataLightboxValue = $link.attr("data-lightbox");
         var $links;
 
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
         if (dataLightboxValue) {
             $links = $(
                 $link.prop("tagName") +
                     '[data-lightbox="' +
-                    dataLightboxValue +
+                    escapeHtml(dataLightboxValue) +
                     '"]'
             );
             for (var i = 0; i < $links.length; i = ++i) {
