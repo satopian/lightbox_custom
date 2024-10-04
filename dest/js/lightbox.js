@@ -53,13 +53,13 @@
         wrapAround: false,
         disableScrolling: false,
         /*
-    Sanitize Title
-    If the caption data is trusted, for example you are hardcoding it in, then leave this to false.
-    This will free you to add html tags, such as links, in the caption.
+	Sanitize Title
+	If the caption data is trusted, for example you are hardcoding it in, then leave this to false.
+	This will free you to add html tags, such as links, in the caption.
 
-    If the caption data is user submitted or from some other untrusted source, then set this to true
-    to prevent xss and other injection attacks.
-     */
+	If the caption data is user submitted or from some other untrusted source, then set this to true
+	to prevent xss and other injection attacks.
+	 */
         sanitizeTitle: false,
     };
 
@@ -184,18 +184,18 @@
         });
 
         /*
-      Show context menu for image on right-click
+		Show context menu for image on right-click
 
-      There is a div containing the navigation that spans the entire image and lives above of it. If
-      you right-click, you are right clicking this div and not the image. This prevents users from
-      saving the image or using other context menu actions with the image.
+		There is a div containing the navigation that spans the entire image and lives above of it. If
+		you right-click, you are right clicking this div and not the image. This prevents users from
+		saving the image or using other context menu actions with the image.
 
-      To fix this, when we detect the right mouse button is pressed down, but not yet clicked, we
-      set pointer-events to none on the nav div. This is so that the upcoming right-click event on
-      the next mouseup will bubble down to the image. Once the right-click/contextmenu event occurs
-      we set the pointer events back to auto for the nav div so it can capture hover and left-click
-      events as usual.
-     */
+		To fix this, when we detect the right mouse button is pressed down, but not yet clicked, we
+		set pointer-events to none on the nav div. This is so that the upcoming right-click event on
+		the next mouseup will bubble down to the image. Once the right-click/contextmenu event occurs
+		we set the pointer events back to auto for the nav div so it can capture hover and left-click
+		events as usual.
+	 */
         this.$nav.on("mousedown", function (event) {
             if (event.button === 2) {
                 self.$nav.css("pointer-events", "none");
@@ -374,10 +374,10 @@
                 70;
 
             /*
-      Since many SVGs have small intrinsic dimensions, but they support scaling
-      up without quality loss because of their vector format, max out their
-      size inside the viewport.
-      */
+		Since many SVGs have small intrinsic dimensions, but they support scaling
+		up without quality loss because of their vector format, max out their
+		size inside the viewport.
+		*/
             if (filetype === "svg") {
                 if (aspectRatio >= 1) {
                     imageWidth = maxImageWidth;
@@ -456,12 +456,12 @@
     Lightbox.prototype.sizeOverlay = function () {
         var self = this;
         /*
-    We use a setTimeout 0 to pause JS execution and let the rendering catch-up.
-    Why do this? If the `disableScrolling` option is set to true, a class is added to the body
-    tag that disables scrolling and hides the scrollbar. We want to make sure the scrollbar is
-    hidden before we measure the document width, as the presence of the scrollbar will affect the
-    number.
-    */
+	We use a setTimeout 0 to pause JS execution and let the rendering catch-up.
+	Why do this? If the `disableScrolling` option is set to true, a class is added to the body
+	tag that disables scrolling and hides the scrollbar. We want to make sure the scrollbar is
+	hidden before we measure the document width, as the presence of the scrollbar will affect the
+	number.
+	*/
         setTimeout(function () {
             self.$overlay
                 .width($(document).width())
@@ -549,8 +549,6 @@
                     this.$lightbox
                         .find(".lb-prev, .lb-next")
                         .css("opacity", "1");
-                } else {
-                    this.$lightbox.find(".lb-prev, .lb-next");
                 }
                 this.$lightbox.find(".lb-prev, .lb-next").show();
             } else {
@@ -558,16 +556,12 @@
                     this.$lightbox.find(".lb-prev").show();
                     if (alwaysShowNav) {
                         this.$lightbox.find(".lb-prev").css("opacity", "1");
-                    } else {
-                        this.$lightbox.find(".lb-prev");
                     }
                 }
                 if (this.currentImageIndex < this.album.length - 1) {
                     this.$lightbox.find(".lb-next").show();
                     if (alwaysShowNav) {
                         this.$lightbox.find(".lb-next").css("opacity", "1");
-                    } else {
-                        this.$lightbox.find(".lb-next");
                     }
                 }
             }
