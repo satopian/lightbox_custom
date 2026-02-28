@@ -219,13 +219,12 @@
         });
 
         // 画像をクリックしても画像を閉じる処理を追加
-        $(document)
+        this.$overlay
             .add(this.$loader)
-            .add(this.$overlay)
             .add(this.$close)
             .add(this.$image)
             .add(this.$nav)
-            .on("click keyup", function (e) {
+            .on("click.lightbox_close keyup.lightbox_close", function (e) {
                 // 1. クリックされた対象が $prev または $next の中身かどうかを判定
                 // self.$prev[0] はネイティブのDOM要素を取り出しています
                 if (
@@ -734,7 +733,6 @@
             this.$triggerElement.trigger("focus");
             this.$triggerElement = null;
         }
-
         $(document).trigger("lightbox:close");
     };
 
