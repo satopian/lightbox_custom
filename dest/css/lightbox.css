@@ -112,7 +112,9 @@ body.lb-disable-scrolling {
     left: 0;
     height: 100%;
     width: 100%;
-    /* z-index: 10; */
+    z-index: 10;
+    /* .lb-navの下の画像をクリックできるようにするため、pointer-eventsをnoneに設定 */
+    pointer-events: none;
 }
 
 .lb-container > .nav {
